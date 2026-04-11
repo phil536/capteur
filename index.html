@@ -15,6 +15,14 @@ function onFailure(message){
 function onMessageArrived(msg){
       // Conversion de la string en JSON
       msg_JSON = JSON.parse(msg.payloadString);
+
+    console.log("🔥 MESSAGE RECU");
+
+    console.log("TOPIC =", msg.destinationName);
+    console.log("RAW =", msg.payloadString);
+
+    document.getElementById("data").innerHTML = msg.payloadString;
+
       document.getElementById("device").innerHTML=msg_JSON.deviceName;
       document.getElementById("data").innerHTML=msg_JSON.object.temperature;
 }
@@ -30,8 +38,6 @@ function MQTTconnect() {
 	mqtt.connect(options);
 }
 </script>
-
-console.log("Paho =", Paho);
 
 <body>
     <h1>MQTT sur WebSocket</h1>
