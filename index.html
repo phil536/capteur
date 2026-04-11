@@ -14,29 +14,29 @@ function onFailure(message){
 
 function onMessageArrived(msg){
 
-    console.log("🔥 MESSAGE RECU");
+    console.log("MESSAGE RECU");
     console.log("TOPIC =", msg.destinationName);
     console.log("RAW =", msg.payloadString);
 
-    // affichage brut (toujours utile)
-    document.getElementById("data").innerHTML = msg.payloadString;
+    if (msg.destinationName.includes("chambre") === false) {
+        return; // ignore tous les autres messages
+    }
+
+    let msg_JSON;
 
     try {
-        let msg_JSON = JSON.parse(msg.payloadString);
-
-        console.log("JSON OK :", msg_JSON);
-
-        if (msg_JSON.deviceName) {
-            document.getElementById("device").innerHTML = msg_JSON.deviceName;
-        }
-
-        if (msg_JSON.object && msg_JSON.object.temperature !== undefined) {
-            document.getElementById("data").innerHTML = msg_JSON.object.temperature;
-        }
-
+        msg_JSON = JSON.parse(msg.payloadString);
     } catch (e) {
-        console.log("❌ PAS DU JSON :", e);
-        // on garde juste le RAW déjà affiché
+        console.log("JSON invalide");
+        return;
+    }
+
+    if (msg_JSON.object && msg_JSON.object.temperature !== undefined) {
+        document.getElementById("data").innerHTML = msg_JSON.object.temperature;
+    }
+
+    if (msg_JSON.deviceName) {
+        document.getElementById("device").innerHTML = msg_JSON.deviceName;
     }
 }
 
