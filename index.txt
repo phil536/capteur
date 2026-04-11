@@ -7,7 +7,7 @@
 	//var host= "mqtt.eclipseprojects.io" ;
 	//var host = "broker.emqx.io";
 	var host = "broker.hivemq.com";
-	var port = 8884;
+	var port = 8000;
 
 function onFailure(message){
 	console.log(" Echec de connexion a " +host) ;
