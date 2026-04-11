@@ -4,8 +4,10 @@
 	<script src=https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.1.0/paho-mqtt.js type="text/javascript"> </script>
 	<script type= "text/javascript" language="javascript">
 	var mqtt ;
-	var host= "mqtt.eclipseprojects.io" ;
-	var port=1884 ;
+	//var host= "mqtt.eclipseprojects.io" ;
+	var host = "broker.emqx.io";
+	var port = 8083;   // ou 8084 pour WSS
+	//var port=1884 ;
 
 function onFailure(message){
 	console.log(" Echec de connexion a " +host) ;
