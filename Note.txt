@@ -1,0 +1,6 @@
+Ouvrir et modifier le fichier HTML sous VS Code
+Lancer le logiciel GitHub, qui doit proposer de "commiter" le fichier modifié
+=> Commiter
+Faire Push de cette modification toujours dans github
+Ouvrir le repositary sous GitHub (web)
+Aller dans Déploiement pour voir la nouvelle page cliquable

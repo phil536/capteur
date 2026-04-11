@@ -45,7 +45,8 @@ function onMessageArrived(msg){
 
 function onConnect(){
 	mqtt.subscribe("app/#") ;//topic
-	document.getElementById("data").innerHTML= "Connecte a "+host;
+	//document.getElementById("data").innerHTML= "Connecte a "+host;
+    document.getElementById("data").innerHTML= "Telemetrie en pause";
 }
 function MQTTconnect() {
 	mqtt=new Paho.MQTT.Client(host, port, "webClient-" + Math.random().toString(16).substr(2, 8)) ;
