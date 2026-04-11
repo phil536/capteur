@@ -47,18 +47,21 @@ function onConnect(){
 function MQTTconnect() {
 	mqtt=new Paho.MQTT.Client(host, port, "webClient-" + Math.random().toString(16).substr(2, 8)) ;
 	mqtt.onMessageArrived=onMessageArrived ;
-	//var options = {timeout :3 , onSuccess :onConnect, onFailure:onFailure,};
 	var options = {useSSL: true , onSuccess :onConnect, onFailure:onFailure,};
 	mqtt.connect(options);
 }
 </script>
 
-<body>
-    <h1>MQTT sur WebSocket</h1>
-    Exemple de connexion WebSocket MQTT avec client paho-mqtt JavaScript.
-    <script>MQTTconnect();</script>
-    Device : <p id="device"></p>
-    <p></p>
-    Temperature : <p id="data"></p>
-   </body>	
+<p>Exemple de connexion WebSocket MQTT avec client paho-mqtt JavaScript.</p>
+
+<div>
+    <span>Device :</span>
+    <p id="device"></p>
+</div>
+
+<div>
+    <span>Temperature :</span>
+    <p id="data"></p>
+</div>
+
 </html>
