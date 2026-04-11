@@ -35,6 +35,9 @@ function onMessageArrived(msg){
         document.getElementById("data").innerHTML = msg_JSON.object.temperature;
     }
 
+    if (msg_JSON.object && msg_JSON.object.temperature !== undefined) {
+        document.getElementById("data").innerHTML = Number(msg_JSON.object.temperature).toFixed(2) + " °C";
+    }
     if (msg_JSON.deviceName) {
         document.getElementById("device").innerHTML = msg_JSON.deviceName;
     }
