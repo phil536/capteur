@@ -7,7 +7,7 @@
 	//var host= "mqtt.eclipseprojects.io" ;
 	//var host = "broker.emqx.io";
 	var host = "broker.hivemq.com";
-	var port = 8080;
+	var port = 8000;
 
 function onFailure(message){
 	console.log(" Echec de connexion a " +host) ;
@@ -25,7 +25,8 @@ function onConnect(){
 	document.getElementById("data").innerHTML= "Connecte a "+host;
 }
 function MQTTconnect() {
-	mqtt=new Paho.MQTT.Client(host, port, "nom_client") ;
+	mqtt=new Paho.MQTT.Client(host, port, "/mqtt",
+    "webClient-" + Math.random().toString(16).substr(2, 8)) ;
 	mqtt.onMessageArrived=onMessageArrived ;
 	var options = {timeout :3 , onSuccess :onConnect, onFailure:onFailure,};
 	mqtt.conect(options);
