@@ -6,7 +6,8 @@
 	var mqtt ;
 	var host = "broker.hivemq.com";
 	var port = 8000;
-
+	console.log(Paho);
+	
 function onFailure(message){
 	console.log(" Echec de connexion a " +host) ;
 	setTimeout(MQTTconnect, 2000) ;
