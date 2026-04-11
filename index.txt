@@ -5,8 +5,10 @@
 	<script type= "text/javascript" language="javascript">
 	var mqtt ;
 	//var host= "mqtt.eclipseprojects.io" ;
-	var host = "broker.emqx.io";
-	var port = 8083;   // ou 8084 pour WSS
+	//var host = "broker.emqx.io";
+	var host = "broker.hivemq.com";
+	//var port = 8083;   // ou 8084 pour WSS
+	var port = 8884;
 	//var port=1884 ;
 
 function onFailure(message){
