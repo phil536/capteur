@@ -1,7 +1,7 @@
 <html>
 	<head>
 	<title>IoT	: MQTT sur WebSocket</title>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.1.0/paho-mqtt.js"></script>
+	<script src="https://unpkg.com/paho-mqtt@1.1.0/paho-mqtt.min.js"></script>
 	<script type= "text/javascript" language="javascript">
 	var mqtt ;
 	var host = "broker.hivemq.com";
@@ -29,6 +29,8 @@ function MQTTconnect() {
 	mqtt.connect(options);
 }
 </script>
+
+console.log("Paho =", Paho);
 
 <body>
     <h1>MQTT sur WebSocket</h1>
