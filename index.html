@@ -43,6 +43,10 @@ function onMessageArrived(msg){
         document.getElementById("data2").innerHTML = Number(msg_JSON.object.humidity).toFixed(2) + " %";
     }
 
+    if (msg_JSON.object && msg_JSON.object.perceivedtemp !== undefined) {
+        document.getElementById("data3").innerHTML = Number(msg_JSON.object.perceivedtemp).toFixed(2) + " °C";
+    }
+
     if (msg_JSON.deviceName) {
         document.getElementById("device").innerHTML = msg_JSON.deviceName;
     }
@@ -65,11 +69,28 @@ function MQTTconnect() {
     Connexion WebSocket MQTT avec client paho-mqtt JavaScript.
     <script>MQTTconnect();</script>
     <p></p>
-    Device : <p id="device"></p>
-     <p></p>
-    Temperature : <p id="data"></p>
+     <table>
+        <tr>
+            <td>Device :</td>
+            <td><span id="device"></span></td>
+        </tr>
     <p></p>
-    Humidity : <p id="data2"></p>
+        <tr>
+            <td>Temperature :</td>
+            <td><span id="data"></span></td>
+        </tr>
+    <p></p>
+        <tr>
+            <td>Humidity :</td>
+            <td><span id="data2"></span></td>
+        </tr>
+    <p></p>
+        <tr>
+            <td>Perceived Temperature :</td>
+            <td><span id="data3"></span></td>
+        </tr>
+    </table>
+    <p></p>
    </body>
 
 </html>
