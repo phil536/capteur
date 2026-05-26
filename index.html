@@ -38,6 +38,11 @@ function onMessageArrived(msg){
     if (msg_JSON.object && msg_JSON.object.temperature !== undefined) {
         document.getElementById("data").innerHTML = Number(msg_JSON.object.temperature).toFixed(2) + " °C";
     }
+
+    if (msg_JSON.object && msg_JSON.object.humidity !== undefined) {
+        document.getElementById("data2").innerHTML = Number(msg_JSON.object.humidity).toFixed(2) + " %";
+    }
+
     if (msg_JSON.deviceName) {
         document.getElementById("device").innerHTML = msg_JSON.deviceName;
     }
@@ -61,8 +66,10 @@ function MQTTconnect() {
     <script>MQTTconnect();</script>
     <p></p>
     Device : <p id="device"></p>
-    <p></p>
+     <p></p>
     Temperature : <p id="data"></p>
+    <p></p>
+    Humidity : <p id="data2"></p>
    </body>
 
 </html>
