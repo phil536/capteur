@@ -54,7 +54,6 @@ function onMessageArrived(msg){
 
 function onConnect(){
 	mqtt.subscribe("app/#") ;//topic
-	//document.getElementById("data").innerHTML= "Connecte a "+host;
     document.getElementById("data").innerHTML= "Télémétrie en pause";
 }
 function MQTTconnect() {
@@ -63,7 +62,7 @@ function MQTTconnect() {
 	var options = {useSSL: true , onSuccess :onConnect, onFailure:onFailure,};
 	mqtt.connect(options);
 }
-//    <h1>MQTT sur WebSocket</h1>
+
 </script>
 <meta charset="UTF-8">
     Connexion WebSocket MQTT avec client paho-mqtt JavaScript.
