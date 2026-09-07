@@ -65,7 +65,7 @@ function onConnect(){
     
     let status = document.getElementById("status");
     status.innerHTML = "● CONNECTÉ";
-    status.className = "status connected";
+    status.className = "status connected";  //définit la classe .connected dans la classe .status
 }
 
 function onConnectionLost() {
@@ -124,13 +124,14 @@ function MQTTconnect() {
         font-weight: bold;
         font-size: 14px;
     }
-    .status.connected {
+    
+    .status.connected { 
         color: #7ef884;
     }
     .status.disconnected {
         color: #ff3d00;
     }
-
+    
     main {
         max-width: 1000px;
         margin: 35px auto;
@@ -265,7 +266,7 @@ function MQTTconnect() {
             </div>
 
             <div class="card-title">
-                Humidity
+                HUMIDITY
             </div>
 
             <div class="humidity">
@@ -273,7 +274,7 @@ function MQTTconnect() {
             </div>
 
             <div class="card-title">
-                Perceived Temperature
+                PERCEIVED TEMPERATURE
             </div>
 
             <div class="perceived_temperature">
