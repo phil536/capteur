@@ -187,7 +187,7 @@ function MQTTconnect() {
         font-size: 16px;
         font-weight: bold;
     }
-
+    
     @media (max-width: 650px) {
 
         .topbar {
@@ -208,9 +208,12 @@ function MQTTconnect() {
 .haut { margin-top: 5px;}
 </style>
 
+<!-- La règle @media en CSS permet d'appliquer des styles conditionnels en fonction 
+ des caractéristiques de l'appareil ou de l'écran-->
+
 <meta charset="UTF-8">
 <body>
-    <div id="haut">Connexion WebSocket MQTT avec client paho-mqtt JavaScript.</div>
+    <!--<div id="haut">Connexion WebSocket MQTT avec client paho-mqtt JavaScript.</div>-->
     <script>MQTTconnect();</script>
     <p></p>
 
@@ -263,28 +266,7 @@ function MQTTconnect() {
 
         </section>
     </main>
-     <!--<table>
-        <tr>
-            <td>Device :</td>
-            <td><span id="device"></span></td>
-        </tr>
-    <tr><td colspan="2"><br></td></tr>
-        <tr>
-            <td>Temperature :</td>
-            <td><span id="data"></span></td>
-        </tr>
-    <tr><td colspan="2"><br></td></tr>
-        <tr>
-            <td>Humidity :</td>
-            <td><span id="data2"></span></td>
-        </tr>
-    <tr><td colspan="2"><br></td></tr>
-        <tr>
-            <td>Perceived Temperature :</td>
-            <td><span id="data3"></span></td>
-        </tr>
-    </table>
--->
+
 </body>
 
 </html>
