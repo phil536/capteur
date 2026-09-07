@@ -46,6 +46,12 @@ function onMessageArrived(msg){
     if (msg_JSON.deviceName) {
         document.getElementById("device").innerHTML = msg_JSON.deviceName;
     }
+
+    // Heure de réception
+     let maintenant = new Date();
+
+    document.getElementById("lastUpdate").innerHTML =
+         maintenant.toLocaleTimeString();
 }
 
 function onConnect(){
@@ -214,9 +220,9 @@ function MQTTconnect() {
             <p>Surveillance environnementale</p>
         </div>
 
-        <div id="status" class="status">
+        <!-- <div id="status" class="status">
             ● CONNEXION...
-        </div>
+        </div>-->
     </header>
     <main> <!-- zone du contenu principal dela page-->
         <section class="measurement-card">
@@ -249,6 +255,13 @@ function MQTTconnect() {
                 DEVICE :
                 <span id="device">---</span>
             </div>
+
+            <div class="last-data">
+                Dernière mesure :
+                <span id="lastUpdate">--:--:--</span>
+            </div>
+
+        </section>
     </main>
      <!--<table>
         <tr>
