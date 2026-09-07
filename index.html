@@ -1,11 +1,24 @@
 <html>
 	<head>
 	<title>IoT	: MQTT sur WebSocket</title>
+
+    <script src="https://cdn.counter.dev/script.js"
+            data-id="ec8dd235-5119-4405-8ecd-1534cf8698d6"  
+            data-utcoffset="2">
+    </script>
+
 	<script src="js/paho-mqtt-min.js"></script>
 	<script type= "text/javascript" language="javascript">
 	var mqtt ;
 	var host = "broker.hivemq.com";
 	var port = 8884;
+
+// Refonte de la partie HTML-CSS concernant <body> 
+// et mises en formes sélectives grâce aux feuilles de style CSS :
+// - un <header> pour l'introduction
+// - une zone du contenu principal de la page : <main>
+// - éléments de division de types bloc : <div>
+// Plus script JS Counter.dev pour les statistiques de visites
 
 function onFailure(message){
 	console.log(" Echec de connexion a " +host) ;
@@ -261,6 +274,15 @@ function MQTTconnect() {
                 TEMPERATURE
             </div>
 
+            <!-- Les 3 lignes suivantes définissent un élément <div> destiné à contenir l’affichage de la température. 
+            La classe CSS temperature permet d’appliquer une mise en forme spécifique à cet élément. 
+            À l’intérieur, l’élément <span> identifié par id="data" constitue une zone de contenu 
+            dynamique dont la valeur peut être modifiée par JavaScript. 
+            La valeur initiale --.--- sert de valeur indicative avant la réception d’une mesure.
+            la balise <span> sert à introduire une division en ligne (et non plus en bloc) dans le texte.
+            <span id="data"> crée une zone en ligne à l'intérieur du bloc la contenant. 
+            id="data" permet surtout à JavaScript d'identifier cette zone et d'en modifier le contenu. -->
+            
             <div class="temperature">
                 <span id="data">--.---</span>
             </div>
