@@ -32,10 +32,6 @@ function onMessageArrived(msg){
     }
 
     if (msg_JSON.object && msg_JSON.object.temperature !== undefined) {
-        document.getElementById("data").innerHTML = msg_JSON.object.temperature;
-    }
-
-    if (msg_JSON.object && msg_JSON.object.temperature !== undefined) {
         document.getElementById("data").innerHTML = Number(msg_JSON.object.temperature).toFixed(2) + " °C";
     }
 
@@ -64,11 +60,197 @@ function MQTTconnect() {
 }
 
 </script>
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #f2f3f5;
+        color: #20252b;
+    }
+
+    .topbar {
+        background: #20252b;
+        color: white;
+        padding: 20px 35px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 4px solid #555;
+    }
+
+    .topbar h1 {
+        margin: 0;
+        font-size: 24px;
+        letter-spacing: 1px;
+    }
+
+    .topbar p {
+        margin: 5px 0 0;
+        color: #c5c9ce;
+        font-size: 14px;
+    }
+
+    .status {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    main {
+        max-width: 1000px;
+        margin: 35px auto;
+        padding: 0 20px;
+    }
+
+    .measurement-card {
+        background: white;
+        border: 1px solid #d5d8dc;
+        border-radius: 6px;
+        padding: 35px;
+        text-align: center;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+    }
+
+    .card-title {
+        font-size: 15px;
+        font-weight: bold;
+        letter-spacing: 2px;
+        color: #666;
+    }
+
+    .temperature {
+        margin: 20px 0;
+        font-size: 64px;
+        font-weight: bold;
+    }
+
+    .humidity {
+        margin: 20px 0;
+        font-size: 64px;
+        font-weight: bold;
+    }
+
+    .perceived_temperature {
+        margin: 20px 0;
+        font-size: 64px;
+        font-weight: bold;
+    }
+
+    .unit {
+        font-size: 28px;
+        font-weight: normal;
+    }
+
+    .device {
+        font-size: 16px;
+        color: #555;
+    }
+
+    .last-data {
+        margin-top: 15px;
+        font-size: 13px;
+        color: #777;
+    }
+
+    .info-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin-top: 20px;
+    }
+
+    .info-card {
+        background: white;
+        border: 1px solid #d5d8dc;
+        border-radius: 6px;
+        padding: 22px;
+    }
+
+    .info-title {
+        font-size: 12px;
+        font-weight: bold;
+        color: #777;
+        letter-spacing: 1px;
+        margin-bottom: 12px;
+    }
+
+    .info-value {
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    @media (max-width: 650px) {
+
+        .topbar {
+            padding: 15px 20px;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .temperature {
+            font-size: 48px;
+        }
+
+        .info-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+</style>
+
 <meta charset="UTF-8">
+<body>
     Connexion WebSocket MQTT avec client paho-mqtt JavaScript.
     <script>MQTTconnect();</script>
     <p></p>
-     <table>
+
+    <header class="topbar">     <!-- Titre, en-tête ou introduction-->
+        <div>
+            <h1>TÉLÉMÉTRIE ESP32</h1>
+            <p>Surveillance environnementale</p>
+        </div>
+
+        <div id="status" class="status">
+            ● CONNEXION...
+        </div>
+    </header>
+    <main> <!-- zone du contenu principal dela page-->
+        <section class="measurement-card">
+
+            <div class="card-title">
+                TEMPERATURE
+            </div>
+
+            <div class="temperature">
+                <span id="data">--.---</span>
+            </div>
+
+            <div class="card-title">
+                Humidity
+            </div>
+
+            <div class="humidity">
+                <span id="data2">--.---</span>
+            </div>
+
+            <div class="card-title">
+                Perceived Temperature
+            </div>
+
+            <div class="perceived_temperature">
+                <span id="data3">--.---</span>
+            </div>
+
+            <div class="device">
+                DEVICE :
+                <span id="device">---</span>
+            </div>
+    </main>
+     <!--<table>
         <tr>
             <td>Device :</td>
             <td><span id="device"></span></td>
@@ -89,7 +271,7 @@ function MQTTconnect() {
             <td><span id="data3"></span></td>
         </tr>
     </table>
-    
-   </body>
+-->
+</body>
 
 </html>
