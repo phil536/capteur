@@ -9,6 +9,11 @@
 
 function onFailure(message){
 	console.log(" Echec de connexion a " +host) ;
+    
+    let status = document.getElementById("status");
+    status.innerHTML = "● DÉCONNECTÉ";
+    status.className = "status disconnected";
+
 	setTimeout(MQTTconnect, 2000) ;
 }
 
@@ -56,11 +61,26 @@ function onMessageArrived(msg){
 
 function onConnect(){
 	mqtt.subscribe("app/#") ;//topic
-    document.getElementById("data").innerHTML= "Télémétrie inactive";
+    //document.getElementById("data").innerHTML= "Télémétrie inactive";
+    
+    let status = document.getElementById("status");
+    status.innerHTML = "● CONNECTÉ";
+    status.className = "status connected";
 }
+
+function onConnectionLost() {
+
+    let status = document.getElementById("status");
+    status.innerHTML = "● DÉCONNECTÉ";
+    status.className = "status disconnected";
+}
+
+// Création du client
 function MQTTconnect() {
 	mqtt=new Paho.MQTT.Client(host, port, "webClient-" + Math.random().toString(16).substr(2, 8)) ;
 	mqtt.onMessageArrived=onMessageArrived ;
+    mqtt.onConnectionLost = onConnectionLost;
+
 	var options = {useSSL: true , onSuccess :onConnect, onFailure:onFailure,};
 	mqtt.connect(options);
 }
@@ -103,6 +123,12 @@ function MQTTconnect() {
     .status {
         font-weight: bold;
         font-size: 14px;
+    }
+    .status.connected {
+        color: #7ef884;
+    }
+    .status.disconnected {
+        color: #ff3d00;
     }
 
     main {
@@ -223,9 +249,9 @@ function MQTTconnect() {
             <p>Surveillance environnementale</p>
         </div>
 
-        <!-- <div id="status" class="status">
-            ● CONNEXION...
-        </div>-->
+        <div id="status" class="status">
+            ● DÉCONNECTÉ
+        </div>
     </header>
     <main> <!-- zone du contenu principal dela page-->
         <section class="measurement-card">
