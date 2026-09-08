@@ -68,8 +68,8 @@ function onMessageArrived(msg){
     // Heure de réception
      let maintenant = new Date();
 
-    document.getElementById("lastUpdate").innerHTML =
-         maintenant.toLocaleTimeString();
+    document.getElementById("lastUpdate").innerHTML = maintenant.toLocaleTimeString();
+    document.getElementById("systemState").innerHTML = "● Télémétrie active";
 }
 
 function onConnect(){
@@ -79,6 +79,9 @@ function onConnect(){
     let status = document.getElementById("status");
     status.innerHTML = "● CONNECTÉ";
     status.className = "status connected";  //définit la classe .connected dans la classe .status
+
+    let mqttState = document.getElementById("mqttState");
+    mqttState.innerHTML = "● Broker MQTT connecté";
 }
 
 function onConnectionLost() {
@@ -99,6 +102,44 @@ function MQTTconnect() {
 }
 
 </script>
+
+  <!--  .info-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin-top: 20px;
+    }
+
+    .info-card {
+        background: white;
+        border: 1px solid #d5d8dc;
+        border-radius: 6px;
+        padding: 22px;
+    }
+
+    .info-title {
+        font-size: 12px;
+        font-weight: bold;
+        color: #777;
+        letter-spacing: 1px;
+        margin-bottom: 12px;
+    }
+
+    .info-value {
+        font-size: 16px;
+        font-weight: bold;
+    }-->
+
+<!--1- La propriété CSS box-sizing définit la façon dont la largeur totale et la hauteur totale d'un élément 
+sont calculées. La valeur border-box indique au navigateur de prendre en compte toute bordure et marge 
+interne. 
+2- Le sélecteur CSS body cible la balise <body> qui contient tout le contenu visible d'une page HTML
+3- La propriété CSS display: flex transforme un élément parent en conteneur flexible pour aligner automatiquement 
+ses enfants sur une ligne.
+4- Le module CSS Grid layout (modèle de disposition en grille) est un module de la spécification CSS 
+qui permet de créer des mises en page en divisant l'espace d'affichage en régions. La grille permet d'aligner
+des éléments sous forme de colonnes et de lignes mais à la différence des tableaux, la grille n'a pas de 
+structure de contenu, les mises en page possibles plus nombreuses. -->
 <style>
     * {
         box-sizing: border-box;
@@ -220,12 +261,13 @@ function MQTTconnect() {
         font-weight: bold;
         color: #777;
         letter-spacing: 1px;
-        margin-bottom: 12px;
+
     }
 
     .info-value {
         font-size: 16px;
         font-weight: bold;
+        line-height : 30px;
     }
     
     @media (max-width: 650px) {
@@ -245,7 +287,6 @@ function MQTTconnect() {
             grid-template-columns: 1fr;
         }
     }
-.haut { margin-top: 5px;}
 </style>
 
 <!-- La règle @media en CSS permet d'appliquer des styles conditionnels en fonction 
@@ -253,7 +294,7 @@ function MQTTconnect() {
 
 <meta charset="UTF-8">
 <body>
-    <!--<div id="haut">Connexion WebSocket MQTT avec client paho-mqtt JavaScript.</div>-->
+    <!--Connexion WebSocket MQTT avec client paho-mqtt JavaScript-->
     <script>MQTTconnect();</script>
     <p></p>
 
@@ -264,8 +305,9 @@ function MQTTconnect() {
         </div>
 
         <div id="status" class="status">
-            ● DÉCONNECTÉ
-        </div>
+            ● DÉCONNECTÉ    <!-- Texte par défaut, remplacé par la valeur de
+                      status.innerHTML si connecté -->
+        </div>    
     </header>
     <main> <!-- zone du contenu principal dela page-->
         <section class="measurement-card">
@@ -314,6 +356,23 @@ function MQTTconnect() {
             </div>
 
         </section>
+                <section class="info-grid">
+                <div class="info-card">
+                <div class="info-title">ÉTAT DU SYSTÈME</div>
+                <div id="systemState" class="info-value">
+                    ● Télémétrie en attente
+                </div>
+            </div>
+
+            <div class="info-card">
+                <div class="info-title">COMMUNICATION MQTT</div>
+                <div id="mqttState" class="info-value">
+                    ● Connexion...
+                </div>
+            </div>
+
+        </section>
+
     </main>
 
 </body>
