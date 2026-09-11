@@ -128,7 +128,15 @@ function MQTTconnect() {
 
   -->
 
-<!--1- La propriété CSS box-sizing définit la façon dont la largeur totale et la hauteur totale d'un élément 
+<!-- La déclaration d'un style s'effectue par le binôme:  propriété : valeur;
+ Les éléments auxquels concernés par le présentation sont sélectionnés par: le sélecteur.
+  sélecteur {propriété : valeur;}. 
+  Sélecteur de base. Exemple: h1 {font-size: 14px;} met en forme toutes les balises <h1>.
+  Sélecteur de classe, pour certaines balises choisies librement: .nom_classe {propriété : valeur;}. 
+  Exemple : .effet1 {font-size: 14px;}, alors <h1 class="effet1">...</h1> met en forme cette seule balise.
+  Sélecteur d'identifiant : proche du sél. de classe mais pour une balise unique, pouvant être traitée par JavaScript.
+  Exemple : #titre2 {text-align: center;}. L'élément identifié: <h1 id="titre2">...</h2>.
+  1- La propriété CSS box-sizing définit la façon dont la largeur totale et la hauteur totale d'un élément 
 sont calculées. La valeur border-box indique au navigateur de prendre en compte toute bordure et marge 
 interne. 
 2- Le sélecteur CSS body cible la balise <body> qui contient tout le contenu visible d'une page HTML
@@ -287,8 +295,10 @@ structure de contenu, les mises en page possibles plus nombreuses. -->
     }
 </style>
 
-<!-- La règle @media en CSS permet d'appliquer des styles conditionnels en fonction 
- des caractéristiques de l'appareil ou de l'écran-->
+<!-- La règle @media en CSS permet d'appliquer des styles conditionnels en fonction des caractéristiques 
+ de l'appareil ou de l'écran : adapte automatiquement la présentation selon la taille de l'écran.
+ C'est une règle CSS conditionnelle: « si la largeur de la fenêtre est inférieure ou égale à 650 pixels ». 
+ Concernant info-grid, sur un téléphone, les 2 cartes passent automatiquement l'une sous l'autre. -->
 
 <meta charset="UTF-8">
 <body>
@@ -299,7 +309,7 @@ structure de contenu, les mises en page possibles plus nombreuses. -->
     <header class="topbar">     <!-- Titre, en-tête ou introduction-->
         <div>
             <h1>TÉLÉMÉTRIE ESP32</h1>
-            <p>Surveillance environnementale</p>
+            <p>Mesures d'ambiance intérieure</p>
         </div>
 
         <div id="status" class="status">
